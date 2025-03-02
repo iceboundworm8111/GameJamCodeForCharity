@@ -63,6 +63,11 @@ public class PlayerMovement : MonoBehaviour
             canJump = false;
         }
 
+        if (isGrounded)
+        {
+            rigidBody.velocity = new Vector3(0, 0, 0);
+        }
+
         if (isGrounded && !isChargingJump)
         {
             GroundMovement();
@@ -77,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, lookLeftAngle, 0);
         }
 
-        if (canJump && Input.GetKey(KeyCode.Space))
+        if (canJump && Input.GetKey(KeyCode.W))
         {
             holdTime += Time.deltaTime;
             if (holdTime > maxHoldTime)
@@ -88,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
             isChargingJump = true;
         }
 
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.W))
         {
             if (isLookingRight)
             {
