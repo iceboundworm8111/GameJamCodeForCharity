@@ -171,10 +171,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.W))
         {
+            float r = 1.5f;
             if (isLookingRight)
             {
                 Vector3 angle = new Vector3(Mathf.Cos(jumpAngle * Mathf.Deg2Rad), Mathf.Sin(jumpAngle * Mathf.Deg2Rad), 0).normalized;
-                float jumpForce = (holdTime / maxHoldTime) * maxJumpForce;
+                float jumpForce = maxJumpForce * Mathf.Pow((holdTime / maxHoldTime), 1.0f / r);
                 rigidbody.AddForce(angle * jumpForce, ForceMode.Impulse);
                 holdTime = 0f;
                 isClimbing = false;
@@ -182,7 +183,7 @@ public class PlayerMovement : MonoBehaviour
             else
             {
                 Vector3 angle = new Vector3(Mathf.Cos(((90 - jumpAngle) + 90) * Mathf.Deg2Rad), Mathf.Sin(((90 - jumpAngle) + 90) * Mathf.Deg2Rad), 0).normalized;
-                float jumpForce = (holdTime / maxHoldTime) * maxJumpForce;
+                float jumpForce = maxJumpForce * Mathf.Pow((holdTime / maxHoldTime), 1.0f / r);
                 rigidbody.AddForce(angle * jumpForce, ForceMode.Impulse);
                 holdTime = 0f;
                 isClimbing = false;
