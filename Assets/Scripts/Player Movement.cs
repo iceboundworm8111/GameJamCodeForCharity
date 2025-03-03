@@ -207,4 +207,10 @@ public class PlayerMovement : MonoBehaviour
             isLookingRight = true;
         }
     }
+
+    public void LaunchPlayer(Transform otherTransform, float launchForce)
+    {
+        Vector3 launchAngle = (transform.position - otherTransform.position).normalized;
+        rigidbody.AddForce(launchAngle * launchForce, ForceMode.Impulse);
+    }
 }
