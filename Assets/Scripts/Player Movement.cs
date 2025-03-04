@@ -4,39 +4,25 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    /*
-    
-    Overview of script!!!
-    
-    Player can move left and right if they are on the ground.
-    Player can only start charging up their jump if they are on the ground.
-    Player can't move if they are charging up their jump.
-    Player can hold space to charge up jump.
-    maxHoldTime is how long until force doesn't get added to the final jump.
-    maxJumpForce is the maximum force that can be added to the jump (will be reached at maxHoldTime).
-    lookRight/LeftAngle sets the y rotation of the player when they move that direction. Also stays like that until you move a different direction.
-    jumpAngle is the angle of the jump force that will be added to the player. 90 is straight up, 0 is straight forward. Should stay between 0 and 90. I convert it to both sides.
-    Most other variables are public for testing purposes.
-
-    */
-
     public float groundSpeed = 5f;
-    public bool isGrounded = false;
-    public bool isLookingRight = true;
+    private bool isGrounded = false;
+    private bool isLookingRight = true;
     public float lookRightAngle = 230;
     public float lookLeftAngle = 130;
 
-    public bool isClimbing = false;
-    public Vector3 climbPosition;
+    private bool isClimbing = false;
+    private Vector3 climbPosition;
 
     public float maxHoldTime = 2f;
     public float maxJumpForce = 10f;
-    public float holdTime = 0f;
+    private float holdTime = 0f;
     public float jumpAngle = 45f;
-    public bool canJump = true;
-    public bool isChargingJump = false;
+    private bool canJump = true;
+    private bool isChargingJump = false;
 
-    public Rigidbody rigidbody;
+    private float ZLock;
+
+    public new Rigidbody rigidbody;
 
     public Transform groundCheck1;
     public Transform groundCheck2;
@@ -49,15 +35,16 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        ZLock = transform.position.z;
     }
 
     // Update is called once per frame
     void Update()
     {
+        transform.position = new Vector3(transform.position.x, transform.position.y, ZLock);
+
         // Shoot ray down to check if player is grounded,
         // if ray hits gameobject with tag "Ground" then player is grounded.
-        // Maximum distance of ray is 1.1f (currently).
         float rayDistance = 0.22f;
         Vector3 rayDirection = Vector3.down;
 
@@ -212,5 +199,10 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 launchAngle = (transform.position - otherTransform.position).normalized;
         rigidbody.AddForce(launchAngle * launchForce, ForceMode.Impulse);
+    }
+
+    public void LaunchPlayer(Vector3 direction, float launchForce)
+    {
+        rigidbody.AddForce(direction.normalized * launchForce, ForceMode.Impulse);
     }
 }

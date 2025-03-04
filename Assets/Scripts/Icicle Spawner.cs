@@ -6,9 +6,9 @@ using UnityEngine;
 public class IcicleSpawner : MonoBehaviour
 {
     public float timeBetweenSpawn = 5f;
-    public float timer = 0;
+    private float timer = 0;
 
-    public bool activated = false;
+    private bool activated = false;
 
     public GameObject iclicle;
     public Transform spawnPoint;
