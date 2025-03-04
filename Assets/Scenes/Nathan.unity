@@ -1072,6 +1072,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: IceRockBig (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 3686771086765764623, guid: 2eb83314d8bdf81429d94f6598d0cfcb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f138a71c6353a8d4e86d458ac8aab914, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1714,6 +1718,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: IceRockBig (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 3686771086765764623, guid: 2eb83314d8bdf81429d94f6598d0cfcb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dc38a27a9eb84847abf1dbf244eca0f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1779,6 +1787,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: IceRockBig (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 3686771086765764623, guid: 2eb83314d8bdf81429d94f6598d0cfcb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 974b035d07834204abc60580303cedbf, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1949,6 +1961,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: IceRockBig (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 3686771086765764623, guid: 2eb83314d8bdf81429d94f6598d0cfcb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dd57826902769a04fa8a9a1495da0914, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2290,6 +2306,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: IceRockBig (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3686771086765764623, guid: 2eb83314d8bdf81429d94f6598d0cfcb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 895af5c2eeb7e6e428411144da5b9973, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2355,6 +2375,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: IceRockBig (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 3686771086765764623, guid: 2eb83314d8bdf81429d94f6598d0cfcb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 26edf9a838b19384c91962d7f05e8712, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2722,6 +2746,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: IceRockBig (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3686771086765764623, guid: 2eb83314d8bdf81429d94f6598d0cfcb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: da0a7bafe18f3b241ac399552f19ecaa, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2787,6 +2815,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: IceRockBig (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 3686771086765764623, guid: 2eb83314d8bdf81429d94f6598d0cfcb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 57d4b8200cd602548bc42ff819dbc637, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2984,6 +3016,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: IceRockBig (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3686771086765764623, guid: 2eb83314d8bdf81429d94f6598d0cfcb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9af58f1d6a4e54340a015eb5ab5e1957, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3192,15 +3228,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4791088610663220205, guid: 52dd095f9264fdc45bbdc3e93cc17f09, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 41.54
+      value: -31.85
       objectReference: {fileID: 0}
     - target: {fileID: 4791088610663220205, guid: 52dd095f9264fdc45bbdc3e93cc17f09, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 131.12
+      value: 3.7
       objectReference: {fileID: 0}
     - target: {fileID: 4791088610663220205, guid: 52dd095f9264fdc45bbdc3e93cc17f09, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.69
+      value: -0.58
       objectReference: {fileID: 0}
     - target: {fileID: 4791088610663220205, guid: 52dd095f9264fdc45bbdc3e93cc17f09, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3318,7 +3354,7 @@ PrefabInstance:
     - target: {fileID: 3686771086765764623, guid: 2eb83314d8bdf81429d94f6598d0cfcb, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: bee1d9e9b51bc18459df0ab8f9be7dbf, type: 2}
+      objectReference: {fileID: 2100000, guid: 528b389d646803e45bc07cc6dfb3eaf0, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3449,6 +3485,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: IceRockBig (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 3686771086765764623, guid: 2eb83314d8bdf81429d94f6598d0cfcb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e2d78dff321fcee4994df1f80df09576, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3578,6 +3618,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: IceRockBig (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 3686771086765764623, guid: 2eb83314d8bdf81429d94f6598d0cfcb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3f4b2223ecb67064192c6b07365a423d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3764,6 +3808,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: IceRockBig (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 3686771086765764623, guid: 2eb83314d8bdf81429d94f6598d0cfcb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b62ce8d9f3512734286d90964870c642, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4579,6 +4627,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: IceRockBig (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 3686771086765764623, guid: 2eb83314d8bdf81429d94f6598d0cfcb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f7d118c5670c80246a680414e78a492c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5019,6 +5071,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: IceRockBig
       objectReference: {fileID: 0}
+    - target: {fileID: 3686771086765764623, guid: 2eb83314d8bdf81429d94f6598d0cfcb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b2afc77d404801a4b88c02dad5d0bbf1, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
