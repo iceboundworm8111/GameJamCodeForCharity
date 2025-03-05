@@ -77,7 +77,6 @@ public class PlayerMovement : MonoBehaviour
 
         fallingAirAS.volume = volumeLevel;
 
-
         float climbRayDistance = 2f;
         Vector3 climbRayDirection = new Vector3(0, 0, 1);
 
@@ -177,12 +176,12 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            isClimbing = false;
-            canJump = false;
-            holdTime = 0f;
-        }
+        //if (Input.GetKeyUp(KeyCode.Space))
+        //{
+        //    isClimbing = false;
+        //    canJump = false;
+        //    holdTime = 0f;
+        //}
 
         if (isLookingRight)
         {
@@ -204,13 +203,18 @@ public class PlayerMovement : MonoBehaviour
             isChargingJump = true;
         }
 
-        if (Input.GetKeyUp(KeyCode.W))
+        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.Space))
         {
-            jumpAS.clip = jumpSounds[currentJumpSound];
-            jumpAS.time = 0.025f;
-            jumpAS.Play();
-            currentJumpSound++;
-            currentJumpSound = currentJumpSound % jumpSounds.Length;
+            if (holdTime != 0)
+            {
+                jumpAS.clip = jumpSounds[currentJumpSound];
+                jumpAS.time = 0.025f;
+                jumpAS.Play();
+                currentJumpSound++;
+                currentJumpSound = currentJumpSound % jumpSounds.Length;
+            }
+
+            
 
             Vector3 angle;
 

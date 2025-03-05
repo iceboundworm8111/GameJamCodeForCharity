@@ -13,6 +13,8 @@ public class IcicleSpawner : MonoBehaviour
     public GameObject iclicle;
     public Transform spawnPoint;
 
+    public AudioSource soundSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +31,8 @@ public class IcicleSpawner : MonoBehaviour
             if (timer > timeBetweenSpawn)
             {
                 timer = 0;
-                Instantiate(iclicle, spawnPoint);
+                GameObject icicle = Instantiate(iclicle, spawnPoint);
+                icicle.GetComponent<Icicle>().GiveScript(this);
             }
         }
     }
@@ -49,5 +52,10 @@ public class IcicleSpawner : MonoBehaviour
         {
             activated = false;
         }
+    }
+
+    public void IcicleDestroy()
+    {
+        soundSource.Play();
     }
 }

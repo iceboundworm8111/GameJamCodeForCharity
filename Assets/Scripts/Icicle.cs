@@ -10,6 +10,8 @@ public class Icicle : MonoBehaviour
 
     public bool resetVelocity = false;
 
+    public IcicleSpawner spawner;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -42,6 +44,13 @@ public class Icicle : MonoBehaviour
             collision.gameObject.GetComponent<PlayerMovement>().LaunchPlayer(transform, launchForce);
         }
 
+        spawner.IcicleDestroy();
+
         Destroy(gameObject);
+    }
+
+    public void GiveScript(IcicleSpawner _spawner)
+    {
+        spawner = _spawner;
     }
 }
