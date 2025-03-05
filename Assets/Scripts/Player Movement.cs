@@ -32,6 +32,14 @@ public class PlayerMovement : MonoBehaviour
     public Transform climbCheck1;
     public Transform climbCheck2;
 
+    public AudioSource latchAS;
+    public AudioClip[] latchSounds;
+    public int currentLatchSound = 0;
+
+    public AudioSource jumpAS;
+    public AudioClip[] jumpSounds;
+    public int currentJumpSound = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +49,37 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float climbRayDistance = 2f;
+        Vector3 climbRayDirection = new Vector3(0, 0, 1);
+
+        RaycastHit climb1Hit;
+        Vector3 climb1RayOrigin = climbCheck1.transform.position;
+        bool climb1 = Physics.Raycast(climb1RayOrigin, climbRayDirection, out climb1Hit, climbRayDistance);
+        Debug.DrawRay(climb1RayOrigin, climbRayDirection * climbRayDistance, Color.red);
+
+        RaycastHit climb2Hit;
+        Vector3 climb2RayOrigin = climbCheck2.transform.position;
+        bool climb2 = Physics.Raycast(climb2RayOrigin, climbRayDirection, out climb2Hit, climbRayDistance);
+        Debug.DrawRay(climb2RayOrigin, climbRayDirection * climbRayDistance, Color.red);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (climb1 && climb1Hit.collider.tag == "Climbable" || climb2 && climb2Hit.collider.tag == "Climbable")
+            {
+                isClimbing = true;
+                climbPosition = transform.position;
+
+                latchAS.clip = latchSounds[currentLatchSound];
+
+                latchAS.time = 0.025f;
+
+                latchAS.Play();
+
+                currentLatchSound++;
+                currentLatchSound = currentLatchSound % latchSounds.Length;
+            }
+        }
+
         transform.position = new Vector3(transform.position.x, transform.position.y, ZLock);
 
         // Shoot ray down to check if player is grounded,
@@ -109,28 +148,6 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-            float climbRayDistance = 2f;
-        Vector3 climbRayDirection = new Vector3(0, 0, 1);
-
-        RaycastHit climb1Hit;
-        Vector3 climb1RayOrigin = climbCheck1.transform.position;
-        bool climb1 = Physics.Raycast(climb1RayOrigin, climbRayDirection, out climb1Hit, climbRayDistance);
-        Debug.DrawRay(climb1RayOrigin, climbRayDirection * climbRayDistance, Color.red);
-
-        RaycastHit climb2Hit;
-        Vector3 climb2RayOrigin = climbCheck2.transform.position;
-        bool climb2 = Physics.Raycast(climb2RayOrigin, climbRayDirection, out climb2Hit, climbRayDistance);
-        Debug.DrawRay(climb2RayOrigin, climbRayDirection * climbRayDistance, Color.red);
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (climb1 && climb1Hit.collider.tag == "Climbable" || climb2 && climb2Hit.collider.tag == "Climbable")
-            {
-                isClimbing = true;
-                climbPosition = transform.position;
-            }
-        }
-
         if (Input.GetKeyUp(KeyCode.Space))
         {
             isClimbing = false;
@@ -160,23 +177,28 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.W))
         {
-            float r = 1.5f;
+            jumpAS.clip = jumpSounds[currentJumpSound];
+            jumpAS.time = 0.025f;
+            jumpAS.Play();
+            currentJumpSound++;
+            currentJumpSound = currentJumpSound % jumpSounds.Length;
+
+            Vector3 angle;
+
             if (isLookingRight)
             {
-                Vector3 angle = new Vector3(Mathf.Cos(jumpAngle * Mathf.Deg2Rad), Mathf.Sin(jumpAngle * Mathf.Deg2Rad), 0).normalized;
-                float jumpForce = maxJumpForce * Mathf.Pow((holdTime / maxHoldTime), 1.0f / r);
-                rigidbody.AddForce(angle * jumpForce, ForceMode.Impulse);
-                holdTime = 0f;
-                isClimbing = false;
+                angle = new Vector3(Mathf.Cos(jumpAngle * Mathf.Deg2Rad), Mathf.Sin(jumpAngle * Mathf.Deg2Rad), 0).normalized;
             }
             else
             {
-                Vector3 angle = new Vector3(Mathf.Cos(((90 - jumpAngle) + 90) * Mathf.Deg2Rad), Mathf.Sin(((90 - jumpAngle) + 90) * Mathf.Deg2Rad), 0).normalized;
-                float jumpForce = maxJumpForce * Mathf.Pow((holdTime / maxHoldTime), 1.0f / r);
-                rigidbody.AddForce(angle * jumpForce, ForceMode.Impulse);
-                holdTime = 0f;
-                isClimbing = false;
+                angle = new Vector3(Mathf.Cos(((90 - jumpAngle) + 90) * Mathf.Deg2Rad), Mathf.Sin(((90 - jumpAngle) + 90) * Mathf.Deg2Rad), 0).normalized;
             }
+
+            float r = 1.5f;
+            float jumpForce = maxJumpForce * Mathf.Pow((holdTime / maxHoldTime), 1.0f / r);
+            rigidbody.AddForce(angle * jumpForce, ForceMode.Impulse);
+            holdTime = 0f;
+            isClimbing = false;
 
             isChargingJump = false;
         }
