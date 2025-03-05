@@ -151,7 +151,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeBetweenSpawn: 0.5
-  timer: 0
-  activated: 0
   iclicle: {fileID: 3422291785433859475, guid: f3223da675a764f4b8e309433af2dbd4, type: 3}
   spawnPoint: {fileID: 798462639483596291}

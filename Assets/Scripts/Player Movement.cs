@@ -134,6 +134,8 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space))
         {
             isClimbing = false;
+            canJump = false;
+            holdTime = 0f;
         }
 
         if (isLookingRight)
