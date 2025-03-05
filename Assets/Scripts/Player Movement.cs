@@ -34,21 +34,50 @@ public class PlayerMovement : MonoBehaviour
 
     public AudioSource latchAS;
     public AudioClip[] latchSounds;
-    public int currentLatchSound = 0;
+    private int currentLatchSound = 0;
 
     public AudioSource jumpAS;
     public AudioClip[] jumpSounds;
-    public int currentJumpSound = 0;
+    private int currentJumpSound = 0;
+
+    public AudioSource fallingAirAS;
+    public AudioClip fallingAirSound;
+    public float minAirSoundSpeed;
+    public float maxAirSoundSpeed;
 
     // Start is called before the first frame update
     void Start()
     {
         ZLock = transform.position.z;
+        fallingAirAS.clip = fallingAirSound;
+        fallingAirAS.volume = 0;
+        fallingAirAS.Play();
     }
 
     // Update is called once per frame
     void Update()
     {
+        float speed = Vector3.Magnitude(rigidbody.velocity);
+
+        float volumeLevel;
+
+        if (speed <= minAirSoundSpeed)
+        {
+            volumeLevel = 0.0f;
+        }
+        else if (speed >= maxAirSoundSpeed)
+        {
+            volumeLevel = 1.0f;
+        }
+        else
+        {
+            // Linear interpolation between 0 and 1 based on the range [minAirSoundSpeed, maxAirSoundSpeed]
+            volumeLevel = (speed - minAirSoundSpeed) / (maxAirSoundSpeed - minAirSoundSpeed);
+        }
+
+        fallingAirAS.volume = volumeLevel;
+
+
         float climbRayDistance = 2f;
         Vector3 climbRayDirection = new Vector3(0, 0, 1);
 
