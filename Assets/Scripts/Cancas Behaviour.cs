@@ -8,6 +8,8 @@ public class CancasBehaviour : MonoBehaviour
     public CameraCenterOnPlayer cameraScript;
     public PlayerMovement playerScript;
 
+    public GameObject platform;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,5 +27,6 @@ public class CancasBehaviour : MonoBehaviour
         gameObject.SetActive(false);
         cameraScript.StartPressed();
         playerScript.StartPressed();
+        platform.SetActive(false);
     }
 }

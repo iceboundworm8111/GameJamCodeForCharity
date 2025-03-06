@@ -61,9 +61,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (frozen)
         {
-            Debug.Log("frozen");
-            rigidbody.velocity = new Vector3(0, 0, 0);
-            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            //rigidbody.velocity = new Vector3(0, 0, 0);
+            //transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             return;
         }
             

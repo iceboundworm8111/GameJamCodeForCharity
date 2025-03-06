@@ -12,7 +12,9 @@ public class CameraCenterOnPlayer : MonoBehaviour
     private bool startPressed = false;
 
     public float zoomInTimer = 5;
-    private float timer = 0;
+    public float lerpAmount = 0.5f;
+
+    public bool normal = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +28,7 @@ public class CameraCenterOnPlayer : MonoBehaviour
         if (!startPressed)
             return;
         
-        if (timer > zoomInTimer)
+        if (normal)
         {
             // Normal
             transform.position = new Vector3(player.position.x, player.position.y, zPos);
@@ -34,7 +36,12 @@ public class CameraCenterOnPlayer : MonoBehaviour
         else
         {
             // Zooming in
+            transform.position = Vector3.Lerp(transform.position, new Vector3(player.position.x, player.position.y, zPos), lerpAmount);
 
+            if (Vector3.Distance(transform.position, new Vector3(player.position.x, player.position.y, zPos)) < 1)
+            {
+                normal = true;
+            }
         }
         
     }
