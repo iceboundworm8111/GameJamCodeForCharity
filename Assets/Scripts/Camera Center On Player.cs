@@ -9,8 +9,6 @@ public class CameraCenterOnPlayer : MonoBehaviour
     public float zPos = -10f;
 
     private bool startPressed = false;
-
-    public float zoomInTimer = 5;
     public float lerpAmount = 0.5f;
 
     public bool normal = false;
@@ -34,8 +32,8 @@ public class CameraCenterOnPlayer : MonoBehaviour
         }
         else
         {
-            // Zooming in
-            transform.position = Vector3.Lerp(transform.position, new Vector3(player.position.x, player.position.y, zPos), lerpAmount);
+            // Zooming in (frame rate independent)
+            transform.position = Vector3.Lerp(transform.position, new Vector3(player.position.x, player.position.y, zPos), 1 - Mathf.Exp(-lerpAmount * Time.deltaTime));
 
             if (Vector3.Distance(transform.position, new Vector3(player.position.x, player.position.y, zPos)) < 1)
             {
