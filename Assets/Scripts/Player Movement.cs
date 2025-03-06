@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public Animator animator;
+    Animator animator;
 
     public bool frozen = true;
+    private bool isLatched = false;
+    private bool isFalling = false;
 
     public float groundSpeed = 5f;
     private bool isGrounded = false;
     private bool isLookingRight = true;
     public float lookRightAngle = 230;
-    public float lookLeftAngle = 130;
+    public float lookLeftAngle = 50;
 
     private bool isClimbing = false;
     private Vector3 climbPosition;
@@ -52,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         ZLock = transform.position.z;
         fallingAirAS.clip = fallingAirSound;
         fallingAirAS.volume = 0;
@@ -67,9 +71,7 @@ public class PlayerMovement : MonoBehaviour
             //transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             return;
         }
-
-        animator.Play("WallHang");
-
+        animator.SetBool("isWalking", false);
         float speed = Vector3.Magnitude(rigidbody.velocity);
 
         float volumeLevel;
@@ -102,6 +104,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 climb2RayOrigin = climbCheck2.transform.position;
         bool climb2 = Physics.Raycast(climb2RayOrigin, climbRayDirection, out climb2Hit, climbRayDistance);
         Debug.DrawRay(climb2RayOrigin, climbRayDirection * climbRayDistance, Color.red);
+        
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -109,6 +112,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 isClimbing = true;
                 climbPosition = transform.position;
+
 
                 latchAS.clip = latchSounds[currentLatchSound];
 
@@ -118,8 +122,19 @@ public class PlayerMovement : MonoBehaviour
 
                 currentLatchSound++;
                 currentLatchSound = currentLatchSound % latchSounds.Length;
+
+                isLatched = true;
+                animator.SetBool("uisClimbing", isLatched);
             }
         }
+
+        if (!isClimbing)
+        {
+            isLatched = false;
+            animator.SetBool("uisClimbing", isLatched);
+        }
+
+
 
         transform.position = new Vector3(transform.position.x, transform.position.y, ZLock);
 
@@ -153,11 +168,15 @@ public class PlayerMovement : MonoBehaviour
         {
             isGrounded = true;
             canJump = true;
+            isFalling = false;
+            animator.SetBool("uisFalling", isFalling);
         }
         else
         {
             isGrounded = false;
             canJump = false;
+            isFalling = true;
+            animator.SetBool("uisFalling", isFalling);
         }
 
         if (isClimbing)
@@ -165,11 +184,15 @@ public class PlayerMovement : MonoBehaviour
             transform.position = climbPosition;
             rigidbody.velocity = new Vector3(0, 0, 0);
             canJump = true;
+            isFalling = false;
+            animator.SetBool("uisFalling", isFalling);
         }
 
         if (isGrounded)
         {
             rigidbody.velocity = new Vector3(0, 0, 0);
+            isFalling = false;
+            animator.SetBool("uisFalling", isFalling);
         }
 
         if (isGrounded && !isChargingJump)
@@ -252,17 +275,26 @@ public class PlayerMovement : MonoBehaviour
 
     void GroundMovement()
     {
+
+        bool isMoving = false;
+
         if (Input.GetKey(KeyCode.A))
         {
             transform.position += new Vector3(-groundSpeed * Time.deltaTime, 0, 0);
             isLookingRight = false;
+            isMoving = true;
+
         }
 
         if (Input.GetKey(KeyCode.D))
         {
             transform.position += new Vector3(groundSpeed * Time.deltaTime, 0, 0);
             isLookingRight = true;
+            animator.SetBool("isWalking", true);
+            isMoving = true;
         }
+
+        animator.SetBool("isWalking", isMoving);
     }
 
     public void LaunchPlayer(Transform otherTransform, float launchForce)
