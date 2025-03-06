@@ -8028,6 +8028,14 @@ PrefabInstance:
       propertyPath: minAirSoundSpeed
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 7288138456873897153, guid: 52dd095f9264fdc45bbdc3e93cc17f09, type: 3}
+      propertyPath: climbingLookLeftAngle
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 7288138456873897153, guid: 52dd095f9264fdc45bbdc3e93cc17f09, type: 3}
+      propertyPath: climbingLookRightAngle
+      value: 145
+      objectReference: {fileID: 0}
     - target: {fileID: 8213670849631296296, guid: 52dd095f9264fdc45bbdc3e93cc17f09, type: 3}
       propertyPath: m_Enabled
       value: 0

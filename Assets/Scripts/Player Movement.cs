@@ -14,8 +14,11 @@ public class PlayerMovement : MonoBehaviour
     public float groundSpeed = 5f;
     private bool isGrounded = false;
     private bool isLookingRight = true;
+    private bool isLookingRightClimbing = true;
     public float lookRightAngle = 230;
     public float lookLeftAngle = 50;
+    public float climbingLookRightAngle = 230;
+    public float climbingLookLeftAngle = 50;
 
     private bool isClimbing = false;
     private Vector3 climbPosition;
@@ -26,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpAngle = 45f;
     private bool canJump = true;
     private bool isChargingJump = false;
+    private bool lastJumpDirection;
 
     private float ZLock;
 
@@ -203,12 +207,12 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.A))
             {
-                isLookingRight = false;
+                isLookingRightClimbing = false;
             }
 
             if (Input.GetKey(KeyCode.D))
             {
-                isLookingRight = true;
+                isLookingRightClimbing = true;
             }
         }
 
@@ -219,13 +223,28 @@ public class PlayerMovement : MonoBehaviour
         //    holdTime = 0f;
         //}
 
-        if (isLookingRight)
+
+        if (isClimbing)
         {
-            transform.rotation = Quaternion.Euler(0, lookRightAngle, 0);
+            if (isLookingRightClimbing)
+            {
+                transform.rotation = Quaternion.Euler(0, climbingLookRightAngle, 0);
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(0, climbingLookLeftAngle, 0);
+            }
         }
         else
         {
-            transform.rotation = Quaternion.Euler(0, lookLeftAngle, 0);
+            if (isLookingRight)
+            {
+                transform.rotation = Quaternion.Euler(0, lookRightAngle, 0);
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(0, lookLeftAngle, 0);
+            }
         }
 
         if (canJump && Input.GetKey(KeyCode.W))
@@ -254,7 +273,14 @@ public class PlayerMovement : MonoBehaviour
 
             Vector3 angle;
 
-            if (isLookingRight)
+            lastJumpDirection = isClimbing ? isLookingRightClimbing : isLookingRight;
+
+            if (isClimbing)
+            {
+                isLookingRight = isLookingRightClimbing;
+            }
+
+            if (lastJumpDirection)
             {
                 angle = new Vector3(Mathf.Cos(jumpAngle * Mathf.Deg2Rad), Mathf.Sin(jumpAngle * Mathf.Deg2Rad), 0).normalized;
             }
