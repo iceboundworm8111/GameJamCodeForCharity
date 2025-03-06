@@ -2820,7 +2820,6 @@ GameObject:
   - component: {fileID: 364442810}
   - component: {fileID: 364442809}
   - component: {fileID: 364442812}
-  - component: {fileID: 364442811}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2894,19 +2893,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &364442811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 364442807}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5f86c473246e16478dfc4119b863f46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  zPos: -15
 --- !u!114 &364442812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2914,12 +2900,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 364442807}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e8f1e52108d74446827c6e268b50da6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 115285592}
+  zPos: -15
+  zoomInTimer: 5
 --- !u!1 &385602892
 GameObject:
   m_ObjectHideFlags: 0
@@ -3161,6 +3149,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1477119463}
   m_SourcePrefab: {fileID: 100100000, guid: 3c60fec0bd123ea45886c508b9319388, type: 3}
+--- !u!114 &410578172 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7288138456873897153, guid: 52dd095f9264fdc45bbdc3e93cc17f09, type: 3}
+  m_PrefabInstance: {fileID: 1283201763}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a39a2a98a33edf45b7f7e249e7e73c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &417545781
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5021,6 +5020,7 @@ GameObject:
   - component: {fileID: 840822200}
   - component: {fileID: 840822199}
   - component: {fileID: 840822198}
+  - component: {fileID: 840822201}
   m_Layer: 5
   m_Name: RawImage
   m_TagString: Untagged
@@ -5090,7 +5090,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 840822199}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 840822201}
+        m_TargetAssemblyTypeName: CancasBehaviour, Assembly-CSharp
+        m_MethodName: PlayPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &840822199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5126,6 +5138,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 840822196}
   m_CullTransparentMesh: 1
+--- !u!114 &840822201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840822196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09f48a4b0feabd740872afe519c0ed04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraScript: {fileID: 364442812}
+  playerScript: {fileID: 410578172}
 --- !u!1001 &843807850
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7720,6 +7746,10 @@ PrefabInstance:
     - target: {fileID: 5528501506755686278, guid: 52dd095f9264fdc45bbdc3e93cc17f09, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.374
+      objectReference: {fileID: 0}
+    - target: {fileID: 7288138456873897153, guid: 52dd095f9264fdc45bbdc3e93cc17f09, type: 3}
+      propertyPath: frozen
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8840336340730727880, guid: 52dd095f9264fdc45bbdc3e93cc17f09, type: 3}
       propertyPath: m_CollisionDetection
@@ -13161,11 +13191,12 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 364442810}
+  - {fileID: 2144453342}
+  - {fileID: 1283201763}
   - {fileID: 1531298309}
   - {fileID: 885954725}
   - {fileID: 1113615749}
   - {fileID: 925389829}
-  - {fileID: 1283201763}
   - {fileID: 1834366968}
   - {fileID: 1888946209}
   - {fileID: 136140935}
@@ -13231,7 +13262,6 @@ SceneRoots:
   - {fileID: 280843231}
   - {fileID: 1692742691}
   - {fileID: 81068852}
-  - {fileID: 2144453342}
   - {fileID: 707978998}
   - {fileID: 1724840287}
   - {fileID: 1079765978}

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public bool frozen = true;
+
     public float groundSpeed = 5f;
     private bool isGrounded = false;
     private bool isLookingRight = true;
@@ -57,6 +59,15 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (frozen)
+        {
+            Debug.Log("frozen");
+            rigidbody.velocity = new Vector3(0, 0, 0);
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            return;
+        }
+            
+
         float speed = Vector3.Magnitude(rigidbody.velocity);
 
         float volumeLevel;
@@ -261,5 +272,10 @@ public class PlayerMovement : MonoBehaviour
     public void LaunchPlayer(Vector3 direction, float launchForce)
     {
         rigidbody.AddForce(direction.normalized * launchForce, ForceMode.Impulse);
+    }
+
+    public void StartPressed()
+    {
+        frozen = false;
     }
 }
