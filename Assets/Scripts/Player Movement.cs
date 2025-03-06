@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public Animator animator;
+
     public bool frozen = true;
 
     public float groundSpeed = 5f;
@@ -65,7 +67,8 @@ public class PlayerMovement : MonoBehaviour
             //transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             return;
         }
-            
+
+        animator.Play("WallHang");
 
         float speed = Vector3.Magnitude(rigidbody.velocity);
 

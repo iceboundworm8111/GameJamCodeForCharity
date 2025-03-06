@@ -2911,9 +2911,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 115285592}
-  zPos: -15
-  zoomInTimer: 5
-  lerpAmount: 0.03
+  zPos: -20
+  lerpAmount: 9
   normal: 0
 --- !u!1 &385602892
 GameObject:
@@ -7912,6 +7911,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 336469936034472898, guid: 52dd095f9264fdc45bbdc3e93cc17f09, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1063102834305664858, guid: 52dd095f9264fdc45bbdc3e93cc17f09, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2858960558664132882, guid: 52dd095f9264fdc45bbdc3e93cc17f09, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -7980,6 +7987,10 @@ PrefabInstance:
       propertyPath: frozen
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7288138456873897153, guid: 52dd095f9264fdc45bbdc3e93cc17f09, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1488665073}
     - target: {fileID: 8840336340730727880, guid: 52dd095f9264fdc45bbdc3e93cc17f09, type: 3}
       propertyPath: m_CollisionDetection
       value: 2
@@ -8955,6 +8966,11 @@ PrefabInstance:
       addedObject: {fileID: 1845192590}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a53dc6af9ad29a40a66f5a0a88a7fac, type: 3}
+--- !u!95 &1488665073 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8213670849631296296, guid: 52dd095f9264fdc45bbdc3e93cc17f09, type: 3}
+  m_PrefabInstance: {fileID: 1283201763}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1494307613
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9372,7 +9388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 269574982}
-  Zpos: -50
+  Zpos: -18
 --- !u!4 &1545604753 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2151822768347691872, guid: 4a53dc6af9ad29a40a66f5a0a88a7fac, type: 3}
