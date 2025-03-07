@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public bool frozen = true;
     private bool isLatched = false;
     private bool isFalling = false;
+    private bool isRope = false;
 
     public float groundSpeed = 5f;
     private bool isGrounded = false;
@@ -398,10 +399,28 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.tag == "Rope")
         {
             frozen = true;
+            isRope = true;
 
             transform.position = new Vector3(collision.transform.position.x, transform.position.y, transform.position.z);
+            transform.rotation = Quaternion.Euler(collision.transform.rotation.x, 150, transform.rotation.z);
+
             Destroy(rigidbody);
             GetComponent<CapsuleCollider>().enabled = false;
+
+            animator.SetBool("uisRope", isRope);
+
+            StartCoroutine(ClimbRope());
+        }
+    }
+    IEnumerator ClimbRope()
+    {
+        float climbSpeed = 1.5f; // Adjust speed as needed
+        float targetHeight = transform.position.y + 35f; // Adjust how far up the rope the player climbs
+
+        while (transform.position.y < targetHeight)
+        {
+            transform.position += new Vector3(0, climbSpeed * Time.deltaTime, 0);
+            yield return null; // Wait for the next frame
         }
     }
 }
