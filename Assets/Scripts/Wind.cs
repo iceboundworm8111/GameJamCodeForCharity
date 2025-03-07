@@ -32,7 +32,7 @@ public class Wind : MonoBehaviour
 
         if (affectingPlayer)
         {
-            playersMovement.LaunchPlayer(windDirection, windForce * Time.deltaTime);
+            playersMovement.WindAffectingPlayer(windDirection, windForce * Time.deltaTime);
         }
     }
 

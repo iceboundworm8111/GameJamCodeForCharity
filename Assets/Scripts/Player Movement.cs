@@ -56,6 +56,8 @@ public class PlayerMovement : MonoBehaviour
     public float minAirSoundSpeed;
     public float maxAirSoundSpeed;
 
+    public float windAffectingPlayerWhileClimbing = 50;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -332,6 +334,38 @@ public class PlayerMovement : MonoBehaviour
     public void LaunchPlayer(Vector3 direction, float launchForce)
     {
         rigidbody.AddForce(direction.normalized * launchForce, ForceMode.Impulse);
+    }
+
+    public void WindAffectingPlayer(Vector3 windDirection, float windForce)
+    {
+        rigidbody.AddForce(windDirection.normalized * windForce, ForceMode.Impulse);
+
+        if (isClimbing)
+        {
+            climbPosition.x = transform.position.x + windDirection.normalized.x * windForce * windAffectingPlayerWhileClimbing * Time.deltaTime;
+
+            float climbRayDistance = 2f;
+            Vector3 climbRayDirection = new Vector3(0, 0, 1);
+
+            RaycastHit climb1Hit;
+            Vector3 climb1RayOrigin = climbCheck1.transform.position;
+            bool climb1 = Physics.Raycast(climb1RayOrigin, climbRayDirection, out climb1Hit, climbRayDistance);
+            Debug.DrawRay(climb1RayOrigin, climbRayDirection * climbRayDistance, Color.red);
+
+            RaycastHit climb2Hit;
+            Vector3 climb2RayOrigin = climbCheck2.transform.position;
+            bool climb2 = Physics.Raycast(climb2RayOrigin, climbRayDirection, out climb2Hit, climbRayDistance);
+            Debug.DrawRay(climb2RayOrigin, climbRayDirection * climbRayDistance, Color.red);
+
+            if (climb1 && climb1Hit.collider.tag == "Climbable" || climb2 && climb2Hit.collider.tag == "Climbable")
+            {
+                isClimbing = true;
+            }
+            else
+            {
+                isClimbing = false;
+            }
+        }
     }
 
     public void StartPressed()
