@@ -10,10 +10,13 @@ public class CancasBehaviour : MonoBehaviour
 
     public GameObject platform;
 
+    public GameObject StartPanel;
+    public GameObject GameOverPanel;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameOverPanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -24,7 +27,15 @@ public class CancasBehaviour : MonoBehaviour
 
     public void PlayPressed()
     {
-        gameObject.SetActive(false);
+        StartPanel.SetActive(false);
+        cameraScript.StartPressed();
+        playerScript.StartPressed();
+        platform.SetActive(false);
+    }
+
+    public void EndPressed()
+    {
+        GameOverPanel.SetActive(true);
         cameraScript.StartPressed();
         playerScript.StartPressed();
         platform.SetActive(false);
