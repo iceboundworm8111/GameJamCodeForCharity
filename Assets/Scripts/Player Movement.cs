@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
+using UnityEngine.Audio;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
     Animator animator;
+
+    public AudioMixer audioMixer;
+    public float currentVolume = 1;
 
     public bool frozen = true;
     private bool isLatched = false;
@@ -71,6 +75,22 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            currentVolume += 0.1f;
+            currentVolume = Mathf.Clamp(currentVolume, 0.0001f, 1f); // Avoids log(0) issue
+            float dB = Mathf.Log10(currentVolume) * 30;
+            audioMixer.SetFloat("MasterVolume", dB);
+        }
+        else if (Input.GetKeyDown(KeyCode.O))
+        {
+            currentVolume -= 0.1f;
+            currentVolume = Mathf.Clamp(currentVolume, 0.0001f, 1f); // Avoids log(0) issue
+            float dB = Mathf.Log10(currentVolume) * 30;
+            audioMixer.SetFloat("MasterVolume", dB);
+        }
+
+
         if (frozen)
         {
             //rigidbody.velocity = new Vector3(0, 0, 0);
@@ -371,5 +391,17 @@ public class PlayerMovement : MonoBehaviour
     public void StartPressed()
     {
         frozen = false;
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Rope")
+        {
+            frozen = true;
+
+            transform.position = new Vector3(collision.transform.position.x, transform.position.y, transform.position.z);
+            Destroy(rigidbody);
+            GetComponent<CapsuleCollider>().enabled = false;
+        }
     }
 }
