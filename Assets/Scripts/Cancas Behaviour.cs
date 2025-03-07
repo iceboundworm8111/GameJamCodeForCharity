@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 //using UnityEditor.Build;
 using UnityEngine;
 
@@ -11,18 +12,21 @@ public class CancasBehaviour : MonoBehaviour
     public GameObject platform;
 
     public GameObject StartPanel;
-    public GameObject GameOverPanel;
+    //public GameObject GameOverPanel;
 
     // Start is called before the first frame update
     void Start()
     {
-        GameOverPanel.SetActive(false);
+        //GameOverPanel.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //if (playerScript.isRope == true)
+        //{
+        //    GameOverPanel.SetActive(true);
+        //}
     }
 
     public void PlayPressed()
@@ -35,9 +39,6 @@ public class CancasBehaviour : MonoBehaviour
 
     public void EndPressed()
     {
-        GameOverPanel.SetActive(true);
-        cameraScript.StartPressed();
-        playerScript.StartPressed();
-        platform.SetActive(false);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
