@@ -2181,8 +2181,8 @@ Transform:
   m_GameObject: {fileID: 263280379}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 92.14, y: 197.36, z: -0.58}
-  m_LocalScale: {x: 0.5, y: 9.2579, z: 0.5}
+  m_LocalPosition: {x: 92.14, y: 213.71, z: -0.58}
+  m_LocalScale: {x: 0.5, y: 28.35232, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -4461,7 +4461,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
+  m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
@@ -5883,7 +5883,6 @@ MonoBehaviour:
   playerScript: {fileID: 410578172}
   platform: {fileID: 2030823894}
   StartPanel: {fileID: 865173385}
-  GameOverPanel: {fileID: 1147521847}
 --- !u!114 &840822202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8056,7 +8055,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1147521848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8112,7 +8111,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 960, y: 536.4952}
+  m_AnchoredPosition: {x: 572, y: 323}
   m_SizeDelta: {x: 1920, y: 1072.9904}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1150551080 stripped
@@ -8911,6 +8910,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 24100000, guid: fbfd367a95596ee4986cde156742f0e6, type: 2}
     - target: {fileID: 7288138456873897153, guid: 52dd095f9264fdc45bbdc3e93cc17f09, type: 3}
+      propertyPath: GameOverPanel
+      value: 
+      objectReference: {fileID: 1147521847}
+    - target: {fileID: 7288138456873897153, guid: 52dd095f9264fdc45bbdc3e93cc17f09, type: 3}
       propertyPath: lookLeftAngle
       value: 50
       objectReference: {fileID: 0}
@@ -9405,7 +9408,7 @@ RectTransform:
   m_GameObject: {fileID: 1363516849}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.673932, y: 1.673932, z: 1.673932}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 713288604}
@@ -9413,7 +9416,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -245}
+  m_AnchoredPosition: {x: 2, y: -145}
   m_SizeDelta: {x: 500.19, y: 165.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1363516851
@@ -9462,7 +9465,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1363516852}
         m_TargetAssemblyTypeName: CancasBehaviour, Assembly-CSharp
-        m_MethodName: PlayPressed
+        m_MethodName: EndPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9488,7 +9491,6 @@ MonoBehaviour:
   playerScript: {fileID: 410578172}
   platform: {fileID: 2030823894}
   StartPanel: {fileID: 865173385}
-  GameOverPanel: {fileID: 1147521847}
 --- !u!114 &1363516853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9679,8 +9681,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -9715,7 +9717,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -24.395874, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -10384,11 +10386,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3c60fec0bd123ea45886c508b9319388, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 104.53131
+      value: 103.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3c60fec0bd123ea45886c508b9319388, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -138.5407
+      value: -138.3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3c60fec0bd123ea45886c508b9319388, type: 3}
       propertyPath: m_LocalPosition.z
