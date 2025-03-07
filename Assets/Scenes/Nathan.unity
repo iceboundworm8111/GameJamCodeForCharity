@@ -8898,6 +8898,10 @@ PrefabInstance:
       value: -0.374
       objectReference: {fileID: 0}
     - target: {fileID: 7288138456873897153, guid: 52dd095f9264fdc45bbdc3e93cc17f09, type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 364442809}
+    - target: {fileID: 7288138456873897153, guid: 52dd095f9264fdc45bbdc3e93cc17f09, type: 3}
       propertyPath: frozen
       value: 1
       objectReference: {fileID: 0}
@@ -8914,8 +8918,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1147521847}
     - target: {fileID: 7288138456873897153, guid: 52dd095f9264fdc45bbdc3e93cc17f09, type: 3}
+      propertyPath: fovMultiplier
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7288138456873897153, guid: 52dd095f9264fdc45bbdc3e93cc17f09, type: 3}
       propertyPath: lookLeftAngle
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7288138456873897153, guid: 52dd095f9264fdc45bbdc3e93cc17f09, type: 3}
+      propertyPath: returnFOVRate
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7288138456873897153, guid: 52dd095f9264fdc45bbdc3e93cc17f09, type: 3}
       propertyPath: maxAirSoundSpeed
@@ -12721,7 +12733,7 @@ Transform:
   m_GameObject: {fileID: 1834366966}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 80.07, y: 184.05, z: -0.73}
+  m_LocalPosition: {x: 80.62, y: 184.05, z: -0.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

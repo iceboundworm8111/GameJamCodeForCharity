@@ -65,6 +65,11 @@ public class PlayerMovement : MonoBehaviour
 
     public float windAffectingPlayerWhileClimbing = 50;
 
+    public Camera camera;
+    public float fovMultiplier = 1.5f;
+    public float returnFOVRate = 0.1f;
+    private float camerafov;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -74,11 +79,23 @@ public class PlayerMovement : MonoBehaviour
         fallingAirAS.clip = fallingAirSound;
         fallingAirAS.volume = 0;
         fallingAirAS.Play();
+
+        camerafov = camera.fieldOfView;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (holdTime != 0)
+        {
+            camera.fieldOfView = camerafov - holdTime * fovMultiplier;
+        }
+        else
+        {
+            camera.fieldOfView = Mathf.Lerp( camera.fieldOfView, camerafov, 1 - Mathf.Exp(-returnFOVRate * Time.deltaTime));
+        }
+
+
         if (Input.GetKeyDown(KeyCode.P))
         {
             currentVolume += 0.1f;
