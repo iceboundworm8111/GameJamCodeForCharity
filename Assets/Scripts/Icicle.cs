@@ -31,7 +31,6 @@ public class Icicle : MonoBehaviour
                 resetVelocity = true;
             }
         }
-            
     }
 
     private void OnCollisionEnter(Collision collision)
